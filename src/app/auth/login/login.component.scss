@@ -1,0 +1,144 @@
+:host {
+  .page-login {
+    background: #202938;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .container-login {
+      max-width: 800px;
+      width: 100%;
+      margin: 50px;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+
+
+        .connect-facebook {
+          position: relative;
+          background: #3c5a98;
+          padding: 20px;
+          display: flex;
+          text-align: center;
+          justify-content: center;
+
+          &::after {
+            position: absolute;
+            content: 'or';
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #202938;
+            color: #FFF;
+            font-weight: 500;
+            border-radius: 50%;
+            top: 15px;
+            right: -30px;
+            z-index: 5;
+          }
+
+
+          p {
+            color: #FFF;
+            font-weight: 500;
+            font-size: 1rem;
+            margin: 0;
+          }
+        }
+
+        .form-login {
+          position: relative;
+          background: #737373;
+          margin-left: 12px;
+          border-radius: 0 5px 5px 0;
+          padding: 10px 25px;
+          z-index: 1;
+
+          .label-form {
+            color: #FFF;
+            font-weight: 500;
+            font-size: 1.25rem;
+            text-align: center;
+          }
+
+          ::ng-deep .mdc-text-field {
+            border: none;
+            border-radius: 3px;
+            background: #384152;
+            color: #9ca9b9;
+            font-weight: 500;
+          }
+
+          .forgot-password {
+            a {
+              color: #9ca9b9;
+            }
+          }
+
+          .container-btn {
+            position: absolute;
+            background: #202938;
+            border-radius: 50%;
+            top: 80px;
+            right: -35px;
+
+            .btn-submit {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 22px;
+              background: #fa5f29;
+              border: none;
+              margin: 12px;
+              border-radius: 50%;
+              transition: 0.3s;
+
+              &:hover {
+                opacity: 0.8;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 681px) {
+    .page-login {
+
+      .container-login {
+
+        ul {
+          flex-direction: column;
+
+
+          .connect-facebook {
+            &::after {
+              top: 245px;
+              left: 20px;
+            }
+
+          }
+
+
+          .form-login {
+            margin-left: 0;
+            margin-top: 15px;
+
+            .container-btn {
+              top: 90px;
+            }
+
+            .label-form {
+              margin-top: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+// Loader
+::ng-deep .spinner-overlay {
+
+  /* Cor do spinner*/
+  .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+    stroke: #FFF;
+  }
+}
