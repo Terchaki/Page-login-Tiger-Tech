@@ -28,17 +28,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
-              },
-              {
-                "glob": "**/*",
                 "input": "public",
-                "output": "."
-              },
-              {
-                "glob": "_redirects",
-                "input": "src",
                 "output": "."
               }
             ],
@@ -99,17 +89,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
-              },
-              {
-                "glob": "**/*",
                 "input": "public",
-                "output": "."
-              },
-              {
-                "glob": "_redirects",
-                "input": "src",
                 "output": "."
               }
             ],
