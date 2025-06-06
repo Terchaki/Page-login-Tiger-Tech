@@ -13,8 +13,6 @@
 
       ul {
         display: flex;
-        // justify-content: space-between;
-
 
         .connect-facebook {
           position: relative;
@@ -40,7 +38,6 @@
             right: -30px;
             z-index: 5;
           }
-
 
           p {
             color: #FFF;
@@ -70,10 +67,8 @@
             line-height: 30px;
           }
 
-
           .field-password,
           .field-username {
-            display: relative;
 
             .required-password,
             .required-username {
@@ -103,13 +98,24 @@
             }
           }
 
+          .input-passaword {
+            position: relative;
+
+            .eye-password {
+              position: absolute;
+              cursor: pointer;
+              bottom: 35px;
+              right: 30px;
+            }
+          }
+
+          // Input Angular Material.
           ::ng-deep .mdc-text-field {
-            // border: none;
             border-radius: 3px;
             background: #384152;
             color: #9ca9b9;
             font-weight: 500;
-            // margin-bottom: 15px;
+            padding-right: 60px;
           }
 
           ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
@@ -124,11 +130,6 @@
           ::ng-deep .mat-mdc-form-field-error-wrapper {
             padding: 0;
           }
-
-          // ::ng-deep .mat-mdc-form-field-subscript-wrapper,
-          // .mat-mdc-form-field-bottom-align::before {
-          //   // display: none;
-          // }
 
           .forgot-password {
             a {
@@ -173,19 +174,26 @@
         ul {
           flex-direction: column;
 
-
           .connect-facebook {
             &::after {
               top: 155px;
               left: 20px;
             }
-
           }
-
 
           .form-login {
             margin-left: 0;
             margin-top: 15px;
+
+            .field-password,
+            .field-username {
+
+              .required-password,
+              .required-username {
+                top: 320px;
+              }
+            }
+
 
             .container-btn {
               top: 90px;
@@ -202,11 +210,11 @@
 
   @media (max-width: 430px) {
     .page-login {
-      // min-width: 280px;
 
       .container-login {
         ul {
           .form-login {
+
             .container-btn {
               top: 45%;
               right: -5px;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
@@ -8,9 +8,16 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { SpinnerComponent } from '../../shared/spinner/spinner.component';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+
+// Angular Material
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+// Components
+import { SpinnerComponent } from '../../shared/components/spinner/spinner.component';
+
+// Services
+import { ToastrFeedbackService } from '../../shared/services/toastr/toastr-feedback.service';
 
 @Component({
   selector: 'app-login',
@@ -29,32 +36,37 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginComponent {
   form: FormGroup;
-  submitForm: boolean = false;
   spinner: boolean = false;
   usernameFocus: boolean = false;
   passwordFocused: boolean = false;
+  passwordVisible: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private toastrFeedbackService: ToastrFeedbackService
+  ) {
     /**
-     * Inicializando forms
+     * Init forms.
      */
     this.form = this.formBuilder.group(this.validatorsForm());
   }
 
   /**
-   * Controles de validacao do formulário.
+   * Validators form:
    */
   validatorsForm() {
     return {
-      /**
-       * Validadores do form:
-       */
       username: [
         '',
         Validators.compose([
           Validators.required,
           Validators.minLength(6),
           Validators.maxLength(50),
+
+          /**
+           * If the username was only possible with a valid email, I would use this validator.
+           */
+          // Validators.email
         ]),
       ],
       password: [
@@ -94,18 +106,38 @@ export class LoginComponent {
     return this.form.controls;
   }
 
-  teste() {
-    console.log(this.f['password'].errors);
+  showPassword() {
+    this.passwordVisible = !this.passwordVisible;
   }
 
+  /**
+   * Submit Form Login.
+   */
   onSubmit() {
-    console.log(this.form);
-    this.submitForm = true;
     if (this.form.valid) {
+
+      // Block where the http request would be to log in and get the token...
+
+      // Mock for Spinner
       this.spinner = true;
       setTimeout(() => {
+        this.form.reset();
+        this.validatorsForm();
         this.spinner = false;
+        this.redirectLogin();
       }, 5000);
+    } else {
+      this.toastrFeedbackService.toast(
+        '',
+        'Mandatory field(s) not filled in correctly!',
+        'error'
+      );
     }
+  }
+
+  redirectLogin() {
+    //Block where it would redirect to the protected route with login completed...
+
+    this.toastrFeedbackService.toast('', 'Login successful!', 'success');
   }
 }

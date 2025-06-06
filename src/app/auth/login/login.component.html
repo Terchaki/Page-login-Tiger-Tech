@@ -1,5 +1,5 @@
-<div class="page-login">
-  <div class="container-login">
+<main class="page-login">
+  <section class="container-login">
     <ul>
       <li class="connect-facebook">
         <a [routerLink]="['/']">
@@ -12,7 +12,7 @@
               src="icons/facebook-icon.svg"
               class="m-4"
               alt="Login with Facebook"
-              loading="eager"
+              loading="lazy"
             />
           </picture>
           <p>Connect with Facebook</p>
@@ -51,22 +51,29 @@
             </div>
             }
           </div>
-          <!-- <span class="feedback-field">Campo inválido!</span> -->
           <div class="field-password">
-            <mat-form-field class="w-100">
-              <mat-label>password</mat-label>
-              <input
-                (input)="teste()"
-                matInput
-                type="password"
-                formControlName="password"
-                (focus)="passwordFocused = true"
-                (blur)="passwordFocused = false"
+            <div class="input-passaword">
+              <mat-form-field class="w-100">
+                <mat-label>password</mat-label>
+                <input
+                  matInput
+                  [type]="passwordVisible ? 'text' : 'password'"
+                  formControlName="password"
+                  (focus)="passwordFocused = true"
+                  (blur)="passwordFocused = false"
+                />
+                @if (!f["password"].value?.length && f["password"].errors) {
+                <mat-error>Password is required!</mat-error>
+                }
+              </mat-form-field>
+              <img
+                src="icons/eye.svg"
+                alt="Eye password"
+                loading="lazy"
+                class="eye-password"
+                (click)="showPassword()"
               />
-              @if (!f["password"].value?.length && f["password"].errors) {
-              <mat-error>Password is required!</mat-error>
-              }
-            </mat-form-field>
+            </div>
             @if (passwordFocused && f["password"].value?.length &&
             f["password"].errors) {
             <div class="required-password">
@@ -108,7 +115,6 @@
             </div>
             }
           </div>
-          <!-- <span class="feedback-field">{{ f["password"].errors | json }}</span> -->
           <p class="forgot-password">
             <a [routerLink]="['/']">Forgot your password?</a>
           </p>
@@ -118,9 +124,10 @@
               <img
                 src="icons/arrow-rigth.svg"
                 alt="Submit form"
-                loading="eager"
+                loading="lazy"
               />
               } @else {
+              <!-- Loader -->
               <app-spinner />
               }
             </button>
@@ -128,5 +135,5 @@
         </form>
       </li>
     </ul>
-  </div>
-</div>
+  </section>
+</main>
