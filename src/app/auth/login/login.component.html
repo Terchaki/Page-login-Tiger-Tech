@@ -2,45 +2,116 @@
   <div class="container-login">
     <ul>
       <li class="connect-facebook">
-        <a href="/">
-          <img
-            src="icons/facebook-icon.svg"
-            class="m-4"
-            alt="Login with Facebook"
-            loading="eager"
-          />
+        <a [routerLink]="['/']">
+          <picture>
+            <source
+              media="(max-width: 685px)"
+              srcset="icons/facebook-icon-small.svg"
+            />
+            <img
+              src="icons/facebook-icon.svg"
+              class="m-4"
+              alt="Login with Facebook"
+              loading="eager"
+            />
+          </picture>
           <p>Connect with Facebook</p>
         </a>
       </li>
-      <li class="form-login">
+      <li class="form-login w-100">
         <form (ngSubmit)="onSubmit()" [formGroup]="form">
           <p class="label-form">Log in with awesome new thing</p>
-          <mat-form-field
-            class="w-100"
-            [ngClass]="{
-              'border border-danger': submitForm && f['username'].errors
-            }"
-          >
-            <mat-label>username or email</mat-label>
-            <input
-              matInput
-              type="text"
-              placeholder="Ex. example@email.com"
-              formControlName="username"
-            />
-          </mat-form-field>
-          <span class="feedback-field">Campo inválido!</span>
-          <mat-form-field
-            class="w-100" 
-            [ngClass]="{
-              'border border-danger': submitForm && f['password'].errors
-            }"
-          >
-            <mat-label>password</mat-label>
-            <input matInput type="password" formControlName="password" />
-          </mat-form-field>
-          <span class="feedback-field">{{ f["password"].errors | json }}</span>
-          <p class="forgot-password"><a href="/">Forgot your password?</a></p>
+          <div class="field-username">
+            <mat-form-field class="w-100">
+              <mat-label>username or email</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder="Ex. example@email.com"
+                formControlName="username"
+                (focus)="usernameFocus = true"
+                (blur)="usernameFocus = false"
+              />
+              @if (!f["username"].value?.length && f["username"].errors) {
+              <mat-error>Username or email is required!</mat-error>
+              } </mat-form-field
+            >@if (usernameFocus && f["username"].value?.length &&
+            f["username"].errors) {
+            <div class="required-username">
+              <p class="text-info">The username field must contain:</p>
+              <ul>
+                <li
+                  [ngClass]="{
+                    'text-danger': f['username'].errors,
+                  }"
+                >
+                  From 6 to 50 characters!
+                </li>
+              </ul>
+            </div>
+            }
+          </div>
+          <!-- <span class="feedback-field">Campo inválido!</span> -->
+          <div class="field-password">
+            <mat-form-field class="w-100">
+              <mat-label>password</mat-label>
+              <input
+                (input)="teste()"
+                matInput
+                type="password"
+                formControlName="password"
+                (focus)="passwordFocused = true"
+                (blur)="passwordFocused = false"
+              />
+              @if (!f["password"].value?.length && f["password"].errors) {
+              <mat-error>Password is required!</mat-error>
+              }
+            </mat-form-field>
+            @if (passwordFocused && f["password"].value?.length &&
+            f["password"].errors) {
+            <div class="required-password">
+              <ul>
+                <p class="text-info">The user password field must contain:</p>
+                <li
+                  [ngClass]="{
+                    'text-danger': f['password'].errors['number'],
+                    'text-success': !f['password'].errors['number']
+                  }"
+                >
+                  Must contain number.
+                </li>
+                <li
+                  [ngClass]="{
+                    'text-danger': f['password'].errors['missingLetter'],
+                    'text-success': !f['password'].errors['missingLetter']
+                  }"
+                >
+                  Must contain letters.
+                </li>
+                <li
+                  [ngClass]="{
+                    'text-danger': f['password'].errors['symbol'],
+                    'text-success': !f['password'].errors['symbol']
+                  }"
+                >
+                  Must contain special character.
+                </li>
+                <li
+                  [ngClass]="{
+                    'text-danger': f['password'].errors['minlength'],
+                    'text-success': !f['password'].errors['minlength']
+                  }"
+                >
+                  Must contain at least 10 characters.
+                </li>
+              </ul>
+            </div>
+            }
+          </div>
+          <!-- <span class="feedback-field">{{ f["password"].errors | json }}</span> -->
+          <p class="forgot-password">
+            <a [routerLink]="['/']">Forgot your password?</a>
+          </p>
           <div class="container-btn">
             <button type="submit" class="btn-submit">
               @if (!spinner) {

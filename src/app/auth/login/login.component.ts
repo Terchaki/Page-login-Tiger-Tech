@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     ReactiveFormsModule,
     SpinnerComponent,
+    RouterLink,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -29,6 +31,8 @@ export class LoginComponent {
   form: FormGroup;
   submitForm: boolean = false;
   spinner: boolean = false;
+  usernameFocus: boolean = false;
+  passwordFocused: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {
     /**
@@ -73,6 +77,9 @@ export class LoginComponent {
             if (!/[^a-zA-Z0-9]/.test(value)) {
               errors.symbol = true;
             }
+            if (!/[a-zA-Z]/.test(value)) {
+              errors.missingLetter = true;
+            }
             return Object.keys(errors).length ? errors : null;
           },
         ]),
@@ -87,9 +94,12 @@ export class LoginComponent {
     return this.form.controls;
   }
 
+  teste() {
+    console.log(this.f['password'].errors);
+  }
+
   onSubmit() {
     console.log(this.form);
-    console.log(this.form.valid);
     this.submitForm = true;
     if (this.form.valid) {
       this.spinner = true;

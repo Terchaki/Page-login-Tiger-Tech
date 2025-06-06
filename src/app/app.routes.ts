@@ -11,4 +11,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./auth/login/login.component').then((m) => m.LoginComponent),
   },
+  // Route wildcard .
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
