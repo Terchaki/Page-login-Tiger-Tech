@@ -115,14 +115,12 @@ export class LoginComponent {
    */
   onSubmit() {
     if (this.form.valid) {
-
       // Block where the http request would be to log in and get the token...
 
       // Mock for Spinner
       this.spinner = true;
       setTimeout(() => {
         this.form.reset();
-        this.validatorsForm();
         this.spinner = false;
         this.redirectLogin();
       }, 5000);

@@ -1,33 +1,91 @@
-Ola. Estas sao as perguntas tecnicas para vaga de frontend:
+# 🏆 Login Screen - Tiger Tech
 
-1. Quais passos você seguiria para solucionar problemas de um site lento?
+<div style="background: #fff; text-align: center">
+  <img src="./public/images/logo-tiger-tech.png" alt="Logo Meetime" width="200">
+</div>
 
-2. Quais passos você seguiria para solucionar problemas de um usuário que enfrentasse um erro no envio de um formulário no site?
+<br>
 
-3. Como desenvolvedor frontend, fale sobre sua experiência no que fazer e o que não fazer ao construir o codigo do site (seja para scripts frontend ou APIs) relacionada ao desempenho.
+## Requirements
+
+1. The Facebook login button is a dummy button, with no functionality required.
+
+2. The form should be responsive.
+
+3. Try to use TailwindCss for the page design (if possible).
+
+4. Focus on form management (do whatever is necessary for a good user experience).
+
+5. Form validation:
+- The "username or email" field is mandatory and must have a minimum of 6 characters and a maximum of 50 characters.
+- The "password" field is mandatory and must have a minimum of 10 characters and contain at least 1 letter, 1 symbol and 1 number.
+- The error/success message can appear while the user is typing (set the validation message style according to your preference).
+- When submitting the form, check that the fields are valid before proceeding to Point 6.
+
+6. When submitting, change the button icon to loader/spinner, which will return after 5 seconds.
+
+7. All of the above must be done with a JavaScript framework of your choice.
+
+8. The entire page must be in English. The code must also be in English, including comments
+
+<br>
 
 
-<hr>
+<br><hr>
 
+## 🚀 Deploy
 
-Este e o teste - uma simples pagina de login
+[![View in browser](https://img.shields.io/badge/View%20in%20Browser-ab00ff?style=for-the-badge)](https://tiger-tech.netlify.app/auth)
 
-1. O botão de login com Facebook é um botão fictício, nenhuma funcionalidade necessária
+<br>
 
-2. O formulário deve ser responsivo
+## 🛠️ Technologies Used
 
-3. Tente usar TailwindCss para o design da pagina (se puder)
+* [Angular (v19)](https://angular.io/) - Framework for building the user interface.
+* [Angular Material](https://material.angular.dev/) - Angular Component Library.
+* [Bootstrap](https://getbootstrap.com/) - CSS style library for easy layout and responsiveness.
+* [Ngx-Toastr](https://www.npmjs.com/package/ngx-toastr) - Library for displaying notifications and visual feedback to the user.
 
-4. Foco no gerenciamento do formulário (fazer o necessário para uma boa experiência do usuário)
+## 📂 Project Folder Structure
 
-5. Validação do formulário:
-	- O campo "username ou e-mail" é obrigatório e deve ter no mínimo 6 caracteres e no máximo 50 caracteres
-	- O campo "senha" é obrigatório e deve ter no mínimo 10 caracteres e conter pelo menos 1 alfabeto, 1 símbolo e 1 número
-	- A mensagem de erro/sucesso pode aparecer enquanto o usuário digita (estilizar a mensagem de validação de acordo com sua preferência)
-	- Ao enviar o formulario, deve verificar se os campos são válidos antes de ir para o Ponto 6
+```bash
+├── public/            // Image and icon storage.
+└── src/
+    └── app/
+        ├── auth/     // Authentication Components.
+        ├── shared/   // Components, Enums, Services and Sharing Interfaces.
+        └── app.config.ts
+```
+<br>
 
-6. Ao enviar, altere o ícone do botão para loader/spinner que mudará novamente após 5 segundos
+## ⚙️ How to Run the Project Locally
 
-7. Tudo acima deve ser feito com um framework JavaScript de sua escolha
+### ✅ Prerequisites
 
-8. A pagina inteira precisa ser em ingles. O codigo tambem em ingles, incluindo comentarios
+* [Node.js](https://nodejs.org/) (recommended LTS version)
+* [Angular CLI](https://angular.io/cli) (Global Installation: `npm install -g @angular/cli`)
+* [Git](https://git-scm.com/)
+
+### 👣 Steps for Execution
+
+1.  Clone the repository:
+    ```bash
+    git clone [https://github.com/Terchaki/teste-frontend-v4.git](https://github.com/Terchaki/Page-login-Tiger-Tech.git)
+    ```
+2.  Install the project dependencies:
+    ```bash
+    npm install
+    ```
+3.  Start the development server:
+    ```bash
+    ng serve -o
+    ```
+    This command will build the application and automatically open it in your browser at `http://localhost:4200`.
+
+<br>
+
+## 🧑‍💻 Autor
+
+* **Nome:** Lucas Henrique
+* **E-mail:** lucas.dev.contato@outlook.com
+* [LinkedIn](https://www.linkedin.com/in/lucas-henrique-sousa-mendes/)

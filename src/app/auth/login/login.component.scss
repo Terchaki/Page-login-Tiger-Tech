@@ -79,6 +79,7 @@
               padding: 10px;
               border-radius: 0 5px 5px 0;
               width: 100%;
+              margin-bottom: 30px;
 
               p {
                 font-size: 0.70rem;
@@ -167,6 +168,7 @@
 
   @media (max-width: 685px) {
     .page-login {
+      align-items: flex-start;
 
       .container-login {
         width: 100%;
